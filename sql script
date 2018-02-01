@@ -21,3 +21,17 @@ Insert into project values (0003, 15125, 0023442, '02-FEB-18', 'Project 3', '01-
 Insert into project values (0004, 15126, 8675309, '02-FEB-18', 'Project 4', '01-APR-16', '10-APR-16', 80000, '01-APR-17', '10-APR-17', 81000);
 Insert into project values (0005, 15127, 5949223, '02-FEB-18', 'Project 5', '01-MAY-16', '10-MAY-16', 90000, '01-MAY-17', '10-MAY-17', 91000);
 
+create table BILL (
+    BILL_ID number constraint bill_pk primary key not null,
+    BILL_DATE date,
+    PROJ_ID number not null
+);
+
+--alter table BILL add constraint bill_bill_id_uq unique (BILL_ID);
+--alter table BILL add constraint PROJ_ID references PROJECT(PROJ_ID);
+
+Insert into bill values (10001, '15-JAN-17', 0001);
+Insert into bill values (10002, '30-JAN-17', 0002);
+Insert into bill values (10003, '15-FEB-17', 0003);
+Insert into bill values (10004, '02-MAR-17', 0004);
+Insert into bill values (10005, '17-MAR-17', 0005);
