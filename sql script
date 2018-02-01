@@ -35,3 +35,20 @@ Insert into bill values (10002, '30-JAN-17', 0002);
 Insert into bill values (10003, '15-FEB-17', 0003);
 Insert into bill values (10004, '02-MAR-17', 0004);
 Insert into bill values (10005, '17-MAR-17', 0005);
+
+create table TASK (
+    TASK_ID number constraint task_pk primary key not null ,
+    PROJ_ID number not null,
+    DESCRIPTION varchar2(200),
+    BEGINDATE date,
+    ENDDATE date
+);
+
+--alter table TASK add constraint task_task_id_uq unique (TASK_ID);
+--alter table TASK add constraint PROJ_ID references PROJECT(PROJ_ID);
+
+Insert into task values (5010, 0001, 'Task 1', '01-JAN-17', '02-JAN-17');
+Insert into task values (5020, 0001, 'Task 2', '02-JAN-17', '03-JAN-17');
+Insert into task values (5030, 0001, 'Task 3', '03-JAN-17', '04-JAN-17');
+Insert into task values (5040, 0001, 'Task 4', '04-JAN-17', '05-JAN-17');
+Insert into task values (5050, 0001, 'Task 5', '05-JAN-17', '06-JAN-17');
