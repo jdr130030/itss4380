@@ -1,0 +1,23 @@
+create table PROJECT (
+    PROJECT_ID number not null constraint project_pk primary key,
+    CUS_ID number not null,
+    EMP_ID number not null,
+    PROJ_DATE date,
+    DESCRIPTION varchar2(200),
+    ES_START date,
+    ES_END date,
+    ES_BUDGET number,
+    AC_START date,
+    AC_END date,
+    AC_COST number
+);
+
+--alter table PROJECT add constraint CUS_ID references CUSTOMER(CUS_ID);
+--alter table PROJECT add constraint EMP_ID references EMPLOYEE(EMP_ID);
+
+Insert into project values (0001, 15123, 3930234, '02-FEB-18', 'Project 1', '01-JAN-16', '10-JAN-16', 50000, '01-JAN-17', '10-JAN-17', 51000);
+Insert into project values (0002, 15124, 6545444, '02-FEB-18', 'Project 2', '01-FEB-16', '10-FEB-16', 60000, '01-FEB-17', '10-FEB-17', 61000);
+Insert into project values (0003, 15125, 0023442, '02-FEB-18', 'Project 3', '01-MAR-16', '10-MAR-16', 70000, '01-MAR-17', '10-MAR-17', 61000);
+Insert into project values (0004, 15126, 8675309, '02-FEB-18', 'Project 4', '01-APR-16', '10-APR-16', 80000, '01-APR-17', '10-APR-17', 81000);
+Insert into project values (0005, 15127, 5949223, '02-FEB-18', 'Project 5', '01-MAY-16', '10-MAY-16', 90000, '01-MAY-17', '10-MAY-17', 91000);
+
