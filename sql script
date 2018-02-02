@@ -1,3 +1,19 @@
+create table empskill (
+	emp_id number not null,
+	skill_id number not null
+	);
+	
+--alter table empskill add constraint emp_id references EMPLOYEE(EMP_ID);
+--alter table empskill add constraint SKILL_ID references SKILL(SKILL_ID);
+
+
+Insert into empskill values (3930234, 5594033948);
+Insert into empskill values (6545444, 1111000101);
+Insert into empskill values (0023442, 8668544545);
+Insert into empskill values (8675309, 3394914345);
+Insert into empskill values (5949223, 3383700111);
+
+
 create table EMPLOYEE (
 	EMP_ID number not null,
 	REGION_ID varchar2(2) not null, 
