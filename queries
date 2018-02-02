@@ -15,7 +15,8 @@ order by emp_lname asc, emp_fname asc, emp_mi asc;
 
 
 --Query 3
-
+select project_id, description, es_budget as "Allocated Budget", (ac_cost-es_budget) as "Amount Over Budget" from project
+where (ac_cost-es_budget) > 0;
 
 
 --Query 4a
@@ -39,6 +40,7 @@ Group by project_id;
 Select emp_lname, emp_fname, emp_mi from employee
 Where not in (select all from employee where employee.emp_id=project.emp_id)
 Group by emp_id;
+
 
 --Query 8:Provide a report showing the total number of customers per region. 
 
