@@ -16,8 +16,6 @@ create table empskill (
 	skill_id number not null
 	);
 	
---alter table empskill add constraint emp_id references EMPLOYEE(EMP_ID);
---alter table empskill add constraint SKILL_ID references SKILL(SKILL_ID);
 
 
 Insert into empskill values (3930234, 5594033948);
@@ -37,7 +35,6 @@ create table EMPLOYEE (
 	PRIMARY KEY(EMP_ID)
 	);
 	
---alter table EMPLOYEE add constraint REGION_ID references REGION(REGION_ID);
 
 
 
@@ -65,9 +62,6 @@ create table CUSTOMER (
     CUS_PHONE varchar2(20)
 );
 
---alter table CUSTOMER add constraint customer_cus_id_uq unique (CUS_ID);
---alter table CUSTOMER add constraint REGION_ID references REGION(REGION_ID);
-
 Insert into CUSTOMER values (15123, 'NW', 'John James', '713-867-5309');
 Insert into CUSTOMER values (15124, 'SW', 'James Smith', '972-867-5309');
 Insert into CUSTOMER values (15125, 'NW', 'Robert Michael', '832-867-5309');
@@ -82,9 +76,7 @@ create table TS (
     TS_QTY number
 );
 
---alter table TS add constraint ts_ts_id_uq unique (TS_ID);
---alter table TS add constraint TASK_ID references TASK(TASK_ID);
---alter table TS add constraint SKILL_ID references SKILL(SKILL_ID);
+
 
 insert into TS values(5847362514, 5010, 5594033948, 10);
 insert into TS values(3339399545, 5020, 1111000101, 20);
@@ -101,9 +93,7 @@ create table WORKLOG (
     BILL_ID number
 );
 
---alter table WORKLOG add constraint worklog_wl_id_uq unique (WL_ID);
---alter table WORKLOG add constraint ASSIGN_ID references ASSIGN(ASSIGN_ID);
---alter table WORKLOG add constraint BILL_ID references BILL(BILL_ID);
+
 
 Insert into WORKLOG values (11510, 00001011, '05-JAN-17', 50, 10001);
 Insert into WORKLOG values (11520, 11010010, '05-FEB-17', 60, 10002);
@@ -118,7 +108,6 @@ create table SKILL (
     RATE number
 );
 
---alter table SKILL add constraint skill_skill_id_uq unique (SKILL_ID);
 
 insert into SKILL values(5594033948, 'PROJECT MANAGER', 148000);
 insert into SKILL values(1111000101, 'DATA ENTRY 1', 19000);
@@ -140,8 +129,6 @@ create table PROJECT (
     AC_COST number
 );
 
---alter table PROJECT add constraint CUS_ID references CUSTOMER(CUS_ID);
---alter table PROJECT add constraint EMP_ID references EMPLOYEE(EMP_ID);
 
 Insert into project values (0001, 15123, 3930234, '02-FEB-18', 'Project 1', '01-JAN-16', '10-JAN-16', 50000, '01-JAN-17', '10-JAN-17', 51000);
 Insert into project values (0002, 15124, 6545444, '02-FEB-18', 'Project 2', '01-FEB-16', '10-FEB-16', 60000, '01-FEB-17', '10-FEB-17', 61000);
@@ -155,8 +142,6 @@ create table BILL (
     PROJ_ID number not null
 );
 
---alter table BILL add constraint bill_bill_id_uq unique (BILL_ID);
---alter table BILL add constraint PROJ_ID references PROJECT(PROJ_ID);
 
 Insert into bill values (10001, '15-JAN-17', 0001);
 Insert into bill values (10002, '30-JAN-17', 0002);
@@ -172,8 +157,7 @@ create table TASK (
     ENDDATE date
 );
 
---alter table TASK add constraint task_task_id_uq unique (TASK_ID);
---alter table TASK add constraint PROJ_ID references PROJECT(PROJ_ID);
+
 
 Insert into task values (5010, 0001, 'Task 1', '01-JAN-17', '02-JAN-17');
 Insert into task values (5020, 0001, 'Task 2', '02-JAN-17', '03-JAN-17');
@@ -190,8 +174,7 @@ create table ASSIGN (
 );
 
 
---alter table ASSIGN add constraint EMP_ID references EMPLOYEE(EMP_ID);
---alter table ASSIGN add constraint TS_ID references TS(TS_ID);
+
 
 insert into ASSIGN values(00001011, 3930234, '18-NOV-13', '11-OCT,18', 5847362514);
 insert into ASSIGN values(11010010, 6545444, '01-JAN-10', '11-DEC-19', 3339399545);
@@ -199,3 +182,25 @@ insert into ASSIGN values(47382910, 0023442, '30-APR-12', '30-MAY-22', 229304958
 insert into ASSIGN values(55458878, 8675309, '21-AUG-10', '28-NOV-20', 2293099989);
 insert into ASSIGN values(65532331, 5949223, '08-FEB-14', '01-SEP-22', 3394433232);
 
+
+
+--alter table SKILL add constraint skill_skill_id_uq unique (SKILL_ID);
+--alter table TASK add constraint task_task_id_uq unique (TASK_ID);
+alter table TASK add constraint PROJ_ID references PROJECT(PROJ_ID);
+alter table ASSIGN add constraint EMP_ID references EMPLOYEE(EMP_ID);
+alter table ASSIGN add constraint TS_ID references TS(TS_ID);
+--alter table BILL add constraint bill_bill_id_uq unique (BILL_ID);
+alter table BILL add constraint PROJ_ID references PROJECT(PROJ_ID);
+alter table PROJECT add constraint CUS_ID references CUSTOMER(CUS_ID);
+alter table PROJECT add constraint EMP_ID references EMPLOYEE(EMP_ID);
+--alter table WORKLOG add constraint worklog_wl_id_uq unique (WL_ID);
+alter table WORKLOG add constraint ASSIGN_ID references ASSIGN(ASSIGN_ID);
+alter table WORKLOG add constraint BILL_ID references BILL(BILL_ID);
+--alter table CUSTOMER add constraint customer_cus_id_uq unique (CUS_ID);
+alter table CUSTOMER add constraint REGION_ID references REGION(REGION_ID);
+--alter table TS add constraint ts_ts_id_uq unique (TS_ID);
+alter table TS add constraint TASK_ID references TASK(TASK_ID);
+alter table TS add constraint SKILL_ID references SKILL(SKILL_ID);
+alter table empskill add constraint emp_id references EMPLOYEE(EMP_ID);
+alter table empskill add constraint SKILL_ID references SKILL(SKILL_ID);
+alter table EMPLOYEE add constraint REGION_ID references REGION(REGION_ID);
