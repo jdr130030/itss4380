@@ -1,3 +1,17 @@
+create table SKILL (
+    SKILL_ID number constraint skill_pk primary key not null ,
+    DESCRIPTION varchar2(100),
+    RATE number
+);
+
+--alter table SKILL add constraint skill_skill_id_uq unique (SKILL_ID);
+
+insert into SKILL values(5594033948, 'PROJECT MANAGER', 148000);
+insert into SKILL values(1111000101, 'DATA ENTRY 1', 19000);
+insert into SKILL values(8668544545, 'SYSTEMS ANALYST 1', 15000);
+insert into SKILL values(3394914345, 'DATABASE DESIGNER 1', 55000);
+insert into SKILL values(3383700111, 'SERVER DBA', 155050);
+
 create table PROJECT (
     PROJECT_ID number not null constraint project_pk primary key,
     CUS_ID number not null,
