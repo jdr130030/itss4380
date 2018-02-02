@@ -201,8 +201,9 @@ Where employee.emp_id=empskill.emp_id and empskill.skill_id=skill.skill_id and s
 Group by emp_id;
 
 --Query 6
-Select count(
-Group by projec
+Select * from task 
+where task.project_id=0001 and task.begindate>01-JAN-17 and task.enddate<05-JAN-17
+Group by project_id;
 
 --Query 7
 Select emp_lname, emp_fname, emp_mi from employee
