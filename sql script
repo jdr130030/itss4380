@@ -1,3 +1,34 @@
+create table EMPLOYEE (
+	EMP_ID number not null,
+	REGION_ID varchar2(2) not null, 
+	EMP_LNAME varchar2(20) not null,
+	EMP_FNAME varchar2(20) not null,
+	EMP_MI varchar2(5),
+	EMP_HIREDATE date,
+	PRIMARY KEY(EMP_ID)
+	);
+	
+--alter table EMPLOYEE add constraint REGION_ID references REGION(REGION_ID);
+
+
+
+Insert into employee values (3930234, 'MN', 'Smith', 'John', null, '14-DEC-11');
+Insert into employee values (6545444, 'SE', 'Waxman', 'Wayne', 'W', '4-NOV-98');
+Insert into employee values (0023442, 'NW', 'Norberg', 'Anne', 'J', '31-JUL-02');
+Insert into employee values (8675309, 'SW', 'Pinchón', 'Brienne', 'D', '01-MAR-10');
+Insert into employee values (5949223, 'NW', 'Coyolxauhqui', 'Tezcatlipoca', 'M', '16-JAN-15');
+create table REGION (
+	region_id varchar2(2) primary key not null CHECK(region_id IN ('NW','SW','MN','MS','NE','SE')),
+	region_name varchar2(20) not null);
+
+Insert into region values ('MN', 'Midwest North');
+Insert into region values ('NW', 'Northwest');
+Insert into region values ('SW', 'Southwest');
+Insert into region values ('MS', 'Midwest South');
+Insert into region values ('NE', 'Northeast');
+Insert into region values ('SE', 'Southeast');
+
+
 create table CUSTOMER (
     CUS_ID number constraint customer_pk primary key not null ,
     REGION_ID varchar2(2) not null , 
