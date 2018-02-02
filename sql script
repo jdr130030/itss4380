@@ -1,3 +1,16 @@
+Drop table Region;
+Drop table Customer;
+Drop table Employee;
+Drop table empskill;
+Drop table Project;
+Drop table Skill;
+Drop table Assign;
+Drop table TS;
+Drop table Task;
+Drop table Bill;
+Drop table Worklog;
+
+
 create table empskill (
 	emp_id number not null,
 	skill_id number not null
