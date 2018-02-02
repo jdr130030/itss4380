@@ -9,7 +9,9 @@ from employee
 
 
 --Query 2
-
+select emp_id as "Employee Number", emp_lname as "Last Name", emp_fname as "First Name", emp_mi as "Middle Initial" 
+from employee
+order by emp_lname asc, emp_fname asc, emp_mi asc;
 
 
 --Query 3
