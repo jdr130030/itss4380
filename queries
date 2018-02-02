@@ -1,10 +1,20 @@
 -- QUERIES
 
 --Query 1
+select employee.emp_fname, employee.emp_lname, task.task_id, task.description
+from employee
+    JOIN assign ON assign.emp_id = employee.emp_id
+    JOIN TS on TS.TS_ID = assign.TS_ID
+    JOIN TASK on TASK.TASK_ID = TS.TASK_ID;
+
 
 --Query 2
 
+
+
 --Query 3
+
+
 
 --Query 4a
 
