@@ -1,3 +1,21 @@
+create table TS (
+    TS_ID number constraint ts_pk primary key not null,
+    TASK_ID number not null,
+    SKILL_ID number not null,
+    TS_QTY number
+);
+
+--alter table TS add constraint ts_ts_id_uq unique (TS_ID);
+--alter table TS add constraint TASK_ID references TASK(TASK_ID);
+--alter table TS add constraint SKILL_ID references SKILL(SKILL_ID);
+
+insert into TS values(5847362514, 5010, 5594033948, 10);
+insert into TS values(3339399545, 5020, 1111000101, 20);
+insert into TS values(2293049586, 5030, 8668544545, 30);
+insert into TS values(2293099989, 5040, 3394914345, 40);
+insert into TS values(3394433232, 5050, 3383700111, 50);
+
+
 create table WORKLOG (
     WL_ID number constraint worklog_pk primary key,
     ASSIGN_ID number,
