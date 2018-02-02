@@ -1,63 +1,3 @@
-Drop table Region;
-Drop table Customer;
-Drop table Employee;
-Drop table empskill;
-Drop table Project;
-Drop table Skill;
-Drop table Assign;
-Drop table TS;
-Drop table Task;
-Drop table Bill;
-Drop table Worklog;
-
-
-create table empskill (
-	emp_id number not null,
-	skill_id number not null
-	);
-	
---alter table empskill add constraint emp_id references EMPLOYEE(EMP_ID);
---alter table empskill add constraint SKILL_ID references SKILL(SKILL_ID);
-
-
-Insert into empskill values (3930234, 5594033948);
-Insert into empskill values (6545444, 1111000101);
-Insert into empskill values (0023442, 8668544545);
-Insert into empskill values (8675309, 3394914345);
-Insert into empskill values (5949223, 3383700111);
-
-
-create table EMPLOYEE (
-	EMP_ID number not null,
-	REGION_ID varchar2(2) not null, 
-	EMP_LNAME varchar2(20) not null,
-	EMP_FNAME varchar2(20) not null,
-	EMP_MI varchar2(5),
-	EMP_HIREDATE date,
-	PRIMARY KEY(EMP_ID)
-	);
-	
---alter table EMPLOYEE add constraint REGION_ID references REGION(REGION_ID);
-
-
-
-Insert into employee values (3930234, 'MN', 'Smith', 'John', null, '14-DEC-11');
-Insert into employee values (6545444, 'SE', 'Waxman', 'Wayne', 'W', '4-NOV-98');
-Insert into employee values (0023442, 'NW', 'Norberg', 'Anne', 'J', '31-JUL-02');
-Insert into employee values (8675309, 'SW', 'Pinchón', 'Brienne', 'D', '01-MAR-10');
-Insert into employee values (5949223, 'NW', 'Coyolxauhqui', 'Tezcatlipoca', 'M', '16-JAN-15');
-create table REGION (
-	region_id varchar2(2) primary key not null CHECK(region_id IN ('NW','SW','MN','MS','NE','SE')),
-	region_name varchar2(20) not null);
-
-Insert into region values ('MN', 'Midwest North');
-Insert into region values ('NW', 'Northwest');
-Insert into region values ('SW', 'Southwest');
-Insert into region values ('MS', 'Midwest South');
-Insert into region values ('NE', 'Northeast');
-Insert into region values ('SE', 'Southeast');
-
-
 create table CUSTOMER (
     CUS_ID number constraint customer_pk primary key not null ,
     REGION_ID varchar2(2) not null , 
@@ -198,4 +138,82 @@ insert into ASSIGN values(11010010, 6545444, '01-JAN-10', '11-DEC-19', 333939954
 insert into ASSIGN values(47382910, 0023442, '30-APR-12', '30-MAY-22', 2293049586);
 insert into ASSIGN values(55458878, 8675309, '21-AUG-10', '28-NOV-20', 2293099989);
 insert into ASSIGN values(65532331, 5949223, '08-FEB-14', '01-SEP-22', 3394433232);
+
+create table EMPLOYEE (
+    emp_id number(20) primary key not null,
+    region_id varchar2(2) not null, 
+    emp_lname varchar2(20) not null,
+    emp_fname varchar2(20) not null,
+    emp_mi varchar2(1),
+    emp_hiredate date not null,
+    CONSTRAINT EMPLOYEE_REGION_ID_FK
+    FOREIGN KEY (REGION_ID) REFERENCES REGION);
+
+Insert into employee values (3930234, ‘MN’, ‘Smith’, ‘John’, null, ‘14-DEC-11’);
+Insert into employee values (6545444, ‘SE’, ‘Waxman’, ‘Wayne’, ‘W’, ‘4-NOV-98’);
+Insert into employee values (0023442, ‘NW’, ‘Norberg’, ‘Anne’, ‘J’, ‘31-JUL-02’);
+Insert into employee values (8675309, ‘SW’, ‘Pinchón’, ‘Brienne’, ‘D’, ‘01-MAR-10’);
+Insert into employee values (5949223, ‘NW’, ‘Coyolxauhqui’, ‘Tezcatlipoca’, ‘M’, ‘16-JAN-15’);
+
+create table REGION (
+    region_id varchar2(2) primary key not null CHECK(region_id IN ('NW','SW','MN',’MS’,’NE’,’SE’)),
+    region_name varchar2(12) not null);
+
+Insert into region values (‘MN’, ‘Midwest North‘);
+Insert into region values (‘NW’, ‘Northwest’);
+Insert into region values (‘SW’, ‘Southwest’);
+Insert into region values (‘MS’, ‘Midwest South’);
+Insert into region values (‘NE’, ‘Northeast’);
+Insert into region values (‘SE’, ‘Southeast’);
+
+create table empskill (
+    emp_id number not null,
+    skill_id number not null
+    CONSTRAINT EMP_ID_FK
+    FOREIGN KEY (EMP_ID) REFERENCES EMPLOYEE
+    CONSTRAINT SKILL_ID_FK
+    FOREIGN KEY (SKILL_ID) REFERENCES SKILL);
+
+Insert into empskill values (3930234, 5594033948);
+Insert into empskill values (6545444, 1111000101);
+Insert into empskill values (0023442, 8668544545);
+Insert into empskill values (8675309, 3394914345);
+Insert into empskill values (5949223, 3383700111);
+
+-- QUERIES
+
+--Query 1
+
+--Query 2
+
+--Query 3
+
+--Query 4a
+
+--Query 4b
+
+
+--Query 5
+
+
+Select emp_lname, emp_fname, emp_mi from employee
+Where employee.emp_id=empskill.emp_id and empskill.skill_id=skill.skill_id and skill.description like ‘%MANAGER%’
+Group by emp_id;
+
+--Query 6
+Select * from task 
+where task.project_id=0001 and task.begindate>01-JAN-17 and task.enddate<05-JAN-17
+Group by project_id;
+
+--Query 7
+Select emp_lname, emp_fname, emp_mi from employee
+Where not in (select all from employee where employee.emp_id=project.emp_id)
+Group by emp_id;
+--Query 8
+
+
+
+--Query 9
+
+--Query 10
 
