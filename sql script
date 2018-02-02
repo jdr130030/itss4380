@@ -1,3 +1,22 @@
+create table WORKLOG (
+    WL_ID number constraint worklog_pk primary key,
+    ASSIGN_ID number,
+    WL_DATE date,
+    WL_HOURS number,
+    BILL_ID number
+);
+
+--alter table WORKLOG add constraint worklog_wl_id_uq unique (WL_ID);
+--alter table WORKLOG add constraint ASSIGN_ID references ASSIGN(ASSIGN_ID);
+--alter table WORKLOG add constraint BILL_ID references BILL(BILL_ID);
+
+Insert into WORKLOG values (11510, 00001011, '05-JAN-17', 50, 10001);
+Insert into WORKLOG values (11520, 11010010, '05-FEB-17', 60, 10002);
+Insert into WORKLOG values (11530, 47382910, '05-MAR-17', 70, 10003);
+Insert into WORKLOG values (11540, 55458878, '05-APR-17', 80, 10004);
+Insert into WORKLOG values (11550, 65532331, '05-MAY-17', 90, 10005);
+
+
 create table SKILL (
     SKILL_ID number constraint skill_pk primary key not null ,
     DESCRIPTION varchar2(100),
