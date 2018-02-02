@@ -1,3 +1,20 @@
+create table CUSTOMER (
+    CUS_ID number constraint customer_pk primary key not null ,
+    REGION_ID varchar2(2) not null , 
+    CUS_NAME varchar2(40),
+    CUS_PHONE varchar2(20)
+);
+
+--alter table CUSTOMER add constraint customer_cus_id_uq unique (CUS_ID);
+--alter table CUSTOMER add constraint REGION_ID references REGION(REGION_ID);
+
+Insert into CUSTOMER values (15123, 'NW', 'John James', '713-867-5309');
+Insert into CUSTOMER values (15124, 'SW', 'James Smith', '972-867-5309');
+Insert into CUSTOMER values (15125, 'NW', 'Robert Michael', '832-867-5309');
+Insert into CUSTOMER values (15126, 'SE', 'David Roberts', '817-867-5309');
+Insert into CUSTOMER values (15127, 'NE', 'Mary Susan', '281-867-5309');
+
+
 create table TS (
     TS_ID number constraint ts_pk primary key not null,
     TASK_ID number not null,
