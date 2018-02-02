@@ -52,3 +52,22 @@ Insert into task values (5020, 0001, 'Task 2', '02-JAN-17', '03-JAN-17');
 Insert into task values (5030, 0001, 'Task 3', '03-JAN-17', '04-JAN-17');
 Insert into task values (5040, 0001, 'Task 4', '04-JAN-17', '05-JAN-17');
 Insert into task values (5050, 0001, 'Task 5', '05-JAN-17', '06-JAN-17');
+
+create table ASSIGN (
+    ASSIGN_ID number constraint assign_pk primary key not null ,
+    EMP_ID number not null,
+    BEGIN date,
+    END date,
+    TS_ID number not null
+);
+
+
+--alter table ASSIGN add constraint EMP_ID references EMPLOYEE(EMP_ID);
+--alter table ASSIGN add constraint TS_ID references TS(TS_ID);
+
+insert into ASSIGN values(00001011, 3930234, '18-NOV-13', '11-OCT,18', 5847362514);
+insert into ASSIGN values(11010010, 6545444, '01-JAN-10', '11-DEC-19', 3339399545);
+insert into ASSIGN values(47382910, 0023442, '30-APR-12', '30-MAY-22', 2293049586);
+insert into ASSIGN values(55458878, 8675309, '21-AUG-10', '28-NOV-20', 2293099989);
+insert into ASSIGN values(65532331, 5949223, '08-FEB-14', '01-SEP-22', 3394433232);
+
