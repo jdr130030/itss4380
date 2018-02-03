@@ -20,8 +20,14 @@ where (ac_cost-es_budget) > 0;
 
 
 --Query 4a
+select SKILL.SKILL_ID, SKILL.SKILL_DESCRIPTION, COUNT(EMPSKILL.EMP_ID)
+FROM SKILL
+JOIN EMPSKILL ON EMPSKILL.EMP_ID=SKILL.EMP_ID;
 
 --Query 4b
+SELECT EMPLOYEE.EMP_FNAME, EMPLOYEE.EMP_LNAME, COUNT(EMPSKILL.SKILL_ID)
+FROM EMPLOYEE
+JOIN EMPSKILL ON EMPLOYEE.EMP_ID = EMPSKILL.EMP_ID;
 
 
 --Query 5
@@ -49,7 +55,10 @@ Where
 Group by region_id
 
 
-
 --Query 9
 
 --Query 10
+Select emp_id, cus_id, skill_id, region_id
+From empskill table, customer table
+Where emp_id = skill_id
+
